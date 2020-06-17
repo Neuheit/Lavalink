@@ -44,6 +44,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Player extends AudioEventAdapter implements AudioSendHandler {
 
+    public ScheduledFuture trackEndFuture;
+    public long lastTrackEndTime;
+
     private static final Logger log = LoggerFactory.getLogger(Player.class);
 
     private SocketContext socketContext;
@@ -52,6 +55,7 @@ public class Player extends AudioEventAdapter implements AudioSendHandler {
     private AudioLossCounter audioLossCounter = new AudioLossCounter();
     private AudioFrame lastFrame = null;
     private ScheduledFuture myFuture = null;
+
     private EqualizerFactory equalizerFactory = new EqualizerFactory();
     private boolean isEqualizerApplied = false;
 
